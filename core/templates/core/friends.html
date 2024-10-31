@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Freinds</h2>
+  {% for friend in friends %}
+    <div class="friend-request-box">
+        <div>
+            <a href="{% url 'profile' friend.id %}">
+            <strong>{{ friend }}</strong>
+        </a>
+        </div>
+        <div >
+            <a href="{% url 'create_room' friend.id %}"><button type="submit">Message</button></a>
+            <a href="{% url 'unfriend' friend.id %}"><button type="submit">Unfriend</button></a>  
+        </div>
+
+    </div>
+{% empty %}
+    <p>No Friends Yet</p>
+{% endfor %}
+
+{% endblock content%}

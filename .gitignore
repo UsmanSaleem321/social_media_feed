@@ -1,0 +1,32 @@
+# Django-specific #
+*.log                       # Log files
+*.pot                       # Compiled translation files
+*.pyc                       # Compiled Python files
+__pycache__/                # Python cache
+db.sqlite3                  # SQLite database
+*.sqlite3                   # Other SQLite databases
+*.pyc                       # Python bytecode
+
+# Django migrations #
+**/migrations/              # Migration files
+!**/migrations/__init__.py  # Allow `__init__.py` for Django apps
+
+# Environment Variables #
+.env                        # Environment variables file
+
+# Static and Media Files #
+/staticfiles/               # Static files collected by Django
+/media/                     # User-uploaded media files
+
+# Virtual Environments #
+venv/                       # Python virtual environment
+env/                        # Another virtual environment name
+
+# IDE and Editor Configs #
+.vscode/                    # VS Code workspace files
+.idea/                      # PyCharm workspace files
+*.swp                       # Swap files
+
+# System Files #
+.DS_Store                   # macOS system files
+Thumbs.db                   # Windows thumbnail cache

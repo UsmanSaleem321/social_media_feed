@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Freind Request Sent:</h2>
+  {% for sent_request in all_request_sent %}
+    <div class="friend-request-box">
+        <div>
+            <strong>{{ sent_request.to_profile }}</strong>
+        </div>
+    </div>
+{% empty %}
+    <p>No friend requests.</p>
+{% endfor %}
+
+<h2>Freind Request Received:</h2>
+{% for recieved_request in all_request_recieved %}
+    <div class="friend-request-box">
+        <div>
+            <strong>{{ recieved_request.from_profile }}</strong>
+        </div>
+        <div>
+            <a href="{% url 'delete_request' recieved_request.from_profile.id %}"><button type="submit">Delete</button></a> 
+        </div>
+        <form method="post" action="{% url 'addfriend' recieved_request.from_profile.id %}">
+            {% csrf_token %}
+            <button type="submit">Accept</button>
+        </form>
+             
+    </div>
+{% empty %}
+    <p>No friend requests.</p>
+{% endfor %}
+{% endblock content%}

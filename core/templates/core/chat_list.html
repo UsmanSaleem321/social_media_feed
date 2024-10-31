@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+     
+    <div class="chat-list-container">
+    
+        <div class="chat-list-header">Chats</div>
+            {% for room in chat_rooms %}
+            <a href="{% url 'chatroom' room.room.id %}" class="chat-item">
+            <img src="{{room.image}}" alt="Charlie">
+            <div class="chat-details">
+                <div class="chat-name">{{room.username}}</div>
+                <div class="chat-preview">{{room.room.message.content}}</div>
+            </div>
+            </a>
+            {% empty %}
+            No chats found
+            {% endfor %}
+        </div>
+    
+    </div>
+
+{% endblock %}

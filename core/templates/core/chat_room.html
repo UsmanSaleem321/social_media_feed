@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/chatroom.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+
+<div class="chat-room">
+    <div class="chat-header" id="chat-room-title">chatroom</div>
+    <div class="messages" id="messages">
+        {% for message in messages%}
+        <strong>{{message.sender }}</strong>
+        <p>{{message.content}} <small>{{message.timestamp}}</small></p>
+       
+        {% endfor %}
+    </div>
+    <div class="chat-input-container">
+      <input type="text" id="message-input" placeholder="Type your message...">
+      <button onclick="sendMessage('{{current_user}}')">Send</button>
+    </div>
+  </div>
+   
+
+{% endblock content %}
+
+{% block js_extra %} 
+<script>
+  // Define the current user and room ID using Django template context
+  const currentUser = "{{ request.user.username }}";  // Assuming `request.user` is passed for the logged-in user
+  const roomId = "{{ room.id }}";  // Assuming `room` is available in the context
+</script>
+
+<script src="{% static 'js/chatroom.js' %}"></script>
+
+{% endblock js_extra %}

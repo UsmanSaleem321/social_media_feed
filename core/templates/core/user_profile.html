@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<section class="bg-light py-3 py-md-5 py-xl-8">
+   <div class="container">
+    <div class="row gy-4 gy-lg-0">
+      <div class="col-12 col-lg-4 col-xl-3">
+        <div class="row gy-4">
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-primary">{% if profile.user == request.user %}Welcome ,{% endif %} {{profile.user}}</div>
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <img src="{{ profile.image.url }}" class="img-fluid rounded-circle" alt={{profile.user.first_name}}{{profile.user.last_name}}>
+                </div>
+                <h5 class="text-center mb-1">{{profile.user.first_name}} {{profile.user.last_name}}</h5>
+                <p class="text-center text-secondary mb-4">{{profile.profession}}</p>
+                <ul class="list-group list-group-flush mb-4">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Followers</h6>
+                    <span>{{profile.followers.count}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Following</h6>
+                    <span>{{profile.following.count}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Friends</h6>
+                    <span>{{profile.friends.count}}</span>
+                  </li>
+                </ul>
+                {% if profile.user != request.user %}
+                <div class="d-grid m-0">
+                  {% if is_follower %}
+                  <a href="{% url 'unfollow' profile.id%}"><button class="btn btn-outline-primary" type="button">UnFollow</button></a>
+                  {% else %}
+                  <a href="{% url 'follow' profile.id%}"><button class="btn btn-outline-primary" type="button">Follow</button></a>
+                   {% endif %}
+                </div>
+                {% endif %}
+                {% if profile.user != request.user %}
+                <div class="d-grid m-0">
+                  {% if is_friend %}
+                  <a href="{% url 'unfriend' profile.id %}"><button class="btn btn-outline-primary" type="button">UnFriend</button></a>
+                   {% elif is_request %} 
+                  <a href="{% url 'delete_request' profile.id %}"><button class="btn btn-outline-primary" type="button">Request Sent</button></a>
+                  {% else %}
+                  <a href="{% url 'sendrequest' profile.id %}"><button class="btn btn-outline-primary" type="button">Add Friend</button></a>
+                   {% endif %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 col-xl-9">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <ul class="nav nav-tabs" id="profileTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" type="button" role="tab" aria-controls="overview-tab-pane" aria-selected="true">Overview</button>
+              </li>
+                {% if profile.user == request.user%}
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-tab-pane" type="button" role="tab" aria-controls="password-tab-pane" aria-selected="false">Password</button>
+              </li>
+                {% endif %}
+            </ul>
+            <div class="tab-content pt-4" id="profileTabContent">
+              <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+                <h5 class="mb-3">About</h5>
+                <p class="lead mb-3">{{profile.bio}}</p>
+                <h5 class="mb-3">Profile</h5>
+                <div class="row g-0">
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">First Name</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{profile.user.first_name}}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Last Name</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{profile.user.last_name}}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Birth Date</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{profile.birth_date}}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Address</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{profile.location}}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Phone</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{profile.phone}}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Email</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{profile.user.email}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                
+                  <div class="col-12">
+                    <div class="row gy-2">
+                      <label class="col-12 form-label m-0">Profile Image</label>
+                      <div class="col-12">
+                        <img src="{{ profile.image.url }}" class="img-fluid" alt="Luna John">
+                      </div>
+                      <div class="col-12">
+                        <a href="{% url 'changeimage' profile.id%}" class="d-inline-block bg-primary link-light lh-1 p-2 rounded">
+                          <i class="bi bi-upload"></i>
+                        </a>
+                        <a href="{% url 'deleteimage' profile.id %}" class="d-inline-block bg-danger link-light lh-1 p-2 rounded">
+                          <i class="bi bi-trash"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <form action="{% url 'profile' profile.id %}" method = "post" class="row gy-3 gy-xxl-4">
+                    {% csrf_token %}
+                  <div class="col-12 col-md-6">
+                    <label for="inputFirstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="inputFirstName" name="first_name" value="{{request.user.first_name}}">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputLastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName" name="last_name" value="{{request.user.last_name}}">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="birthday" class="form-label">Select your birthday:</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday" value="{{profile.birth_date}}">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputPhone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="inputPhone" name="phone" value="{{profile.phone}}">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" value="{{profile.user.email}}">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputAddress" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" name="location" value="{{profile.location}}">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAbout" class="form-label">About</label>
+                   <input type="text"  class="form-control" id="inputAbout" name="bio"  value="{{profile.bio}}">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="tab-pane fade" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabindex="0">
+                <form action="{% url 'change_password'%}" method = "post">
+                  {% csrf_token %}
+                  <div class="row justify-content-center">
+                    <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h2 class="card-title">Change Password</h2>
+                          <form method="post">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <button type="submit" class="btn btn-primary">Update</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endblock %}

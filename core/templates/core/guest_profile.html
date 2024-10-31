@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2>{{request.user}}'s Profile</h2>
+<p>welcome to landing for social site</p>
+{% else %}
+<h2> Guest Page</h2>
+<p>Please <a href="{% url 'login' %}">Log in</a> or <a href="{% url 'signup' %}">Sign Up</a> connect with friends and family</p>
+{% endif %}
+
+{% endblock %}
