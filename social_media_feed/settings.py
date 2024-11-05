@@ -108,8 +108,12 @@ ASGI_APPLICATION = 'social_media_feed.asgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",  # Use BASE_DIR to specify the path
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'social_media',
+        'USER': 'usman',
+        'PASSWORD': 'usman',
+        'HOST': 'localhost',  # Use 'localhost' if running on the same server
+        'PORT': '',           # Leave empty for default port 5432
     }
 }
 
