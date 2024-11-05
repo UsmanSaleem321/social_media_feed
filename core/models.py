@@ -29,7 +29,6 @@ class Like(models.Model):
     def __str__(self):
         return f"{self.user.username} liked {self.post.content[:20]}..."
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
@@ -40,6 +39,7 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     followers = models.ManyToManyField('self', blank=True, symmetrical=False, related_name='following')
     friends = models.ManyToManyField('self', blank=True, symmetrical=True, related_name='friends_with')   
+
     def __str__(self):
         return self.user.username
 
@@ -51,7 +51,6 @@ class FriendRequest(models.Model):
     def __str__(self):
         return f"{self.from_profile} sent friend request to {self.to_profile}"
 
-
 class Room(models.Model):
     participants = models.ManyToManyField(Profile, related_name="rooms")
     updated_at = models.DateTimeField(auto_now=True)
@@ -59,7 +58,6 @@ class Room(models.Model):
     @property
     def message(self):
         return self.messages.order_by("timestamp").first()
-
 
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name="messages", on_delete=models.CASCADE)
@@ -69,9 +67,6 @@ class Message(models.Model):
 
     class Meta:
         ordering = ['timestamp']
-
-
-
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
