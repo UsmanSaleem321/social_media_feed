@@ -101,7 +101,7 @@ REST_FRAMEWORK = {
 }
 
 ASGI_APPLICATION = 'social_media_feed.asgi.application'
-
+WSGI_APPLICATION = 'social_media_feed.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
