@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['18.232.130.29', 'localhost','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
+   
     'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'core',
     'api',
+    'channels',
 ]
 
 MIDDLEWARE = [
