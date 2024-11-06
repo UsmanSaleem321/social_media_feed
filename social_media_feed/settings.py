@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['18.232.130.29', 'localhost','127.0.0.1']
 
 INSTALLED_APPS = [
     'channels',
-    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'core',
     'api',
+    'daphne',
     
 ]
 
