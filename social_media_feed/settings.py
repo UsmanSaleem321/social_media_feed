@@ -37,11 +37,11 @@ INSTALLED_APPS = [
    
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
+    'django.contrib.contenttypes',
     'django.contrib.staticfiles',
-     'daphne',
     'rest_framework',
     'rest_framework_simplejwt', 
     'rest_framework.authtoken',
