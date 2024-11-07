@@ -10,7 +10,7 @@ from django.core.asgi import get_asgi_application
 from core.routing import websocket_urlpatterns
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'social_media_feed.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.getenv("DJANGO_SETTINGS_MODULE"))
 
 application = ProtocolTypeRouter({
      "http": get_asgi_application(),
