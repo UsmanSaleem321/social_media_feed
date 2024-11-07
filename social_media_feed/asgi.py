@@ -1,7 +1,8 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'social_media_feed.settings')
-
 import django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'social_media_feed.settings')
+django.setup()
+
 from django.conf import settings
 from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
@@ -12,7 +13,7 @@ from core.routing import websocket_urlpatterns
 
 
 # Initialize Django
-django.setup()
+
 
 # Define the ASGI application
 application = ProtocolTypeRouter({
