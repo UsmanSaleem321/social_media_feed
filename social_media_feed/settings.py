@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'social_media_feed.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'social_media',
         'USER': 'usman',
         'PASSWORD': 'usman',
