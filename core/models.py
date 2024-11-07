@@ -38,7 +38,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=15, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     followers = models.ManyToManyField('self', blank=True, symmetrical=False, related_name='following')
-    friends = models.ManyToManyField('self', blank=True, symmetrical=True, related_name='friends_with')   
+    friends = models.ManyToManyField('self', blank=True, symmetrical=False, related_name='friends_with')   
 
     def __str__(self):
         return self.user.username
