@@ -34,13 +34,14 @@ ALLOWED_HOSTS = ['18.232.130.29', 'localhost','127.0.0.1']
 
 INSTALLED_APPS = [
     'channels',
-    'daphne',
+   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'daphne',
     'rest_framework',
     'rest_framework_simplejwt', 
     'rest_framework.authtoken',
