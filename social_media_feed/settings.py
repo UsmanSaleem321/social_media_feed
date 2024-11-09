@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True' 
 
-ALLOWED_HOSTS = ['18.232.130.29', 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['54.172.237.196', 'localhost','127.0.0.1']
 
 
 # Application definition
