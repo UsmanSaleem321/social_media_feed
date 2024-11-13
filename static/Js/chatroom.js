@@ -1,7 +1,7 @@
 // chatroom.js
 
 // Replace with actual room ID and user name
-const wsUrl = `ws://54.172.237.196/ws/chats/${roomId}/`;  // WebSocket endpoint URL
+const wsUrl = `wss://54.172.237.196/ws/chats/${roomId}/`;
 const socket = new WebSocket(wsUrl);
 
 // WebSocket event listeners

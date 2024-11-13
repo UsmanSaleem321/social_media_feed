@@ -84,7 +84,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("54.172.237.196", 8000)],  # Redis server for production
+            "hosts": [("54.172.237.196", 6379)],  # Ensure Redis is running on port 6379
         },
     },
 }
