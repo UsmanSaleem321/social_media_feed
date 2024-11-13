@@ -33,11 +33,7 @@
   // Define the current user and room ID using Django template context
   const currentUser = "{{ request.user.username }}";  // Assuming `request.user` is passed for the logged-in user
   const roomId = "{{ room.id }}";  // Assuming `room` is available in the context
-</script>
-
-<script>
   // chatroom.js
-
 // Replace with actual room ID and user name
 const wsUrl = `wss://54.172.237.196/ws/chats/${roomId}/`;
 const socket = new WebSocket(wsUrl);
