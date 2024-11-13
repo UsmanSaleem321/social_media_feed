@@ -36,7 +36,6 @@
                   {% else %}
                   <a href="{% url 'follow' profile.id%}"><button class="btn btn-outline-primary" type="button">Follow</button></a>
                    {% endif %}
-                   <a href="{% url 'create_room' friend.id %}"><button type="submit">Message</button></a>
                 </div>
                 {% endif %}
                 {% if profile.user != request.user %}
