@@ -80,14 +80,16 @@ TEMPLATES = [
     },
 ]
 
+# settings.py
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("54.172.237.196", 6379)],  # Ensure Redis is running on port 6379
-        },
-    },
+        "BACKEND": "channels.layers.InMemoryChannelLayer",  # Or Redis if using Redis in production
+    }
 }
+
+# Ensure that 'ASGI_APPLICATION' is correctly set
+ASGI_APPLICATION = 'social_media_feed.routing.application'  # Adjust if your app name is different
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=20),  # Set access token lifetime (default is 5 minutes)
