@@ -77,6 +77,17 @@ CHANNEL_LAYERS = {
         },
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",  # Make sure this matches your Redis setup
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=20),  # Set access token lifetime (default is 5 minutes)
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Set refresh token lifetime (default is 1 day)
