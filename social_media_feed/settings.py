@@ -87,6 +87,11 @@ CHANNEL_LAYERS = {
     }
 }
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SAMESITE = 'None'
+
 # Ensure that 'ASGI_APPLICATION' is correctly set
 ASGI_APPLICATION = 'social_media_feed.routing.application'  # Adjust if your app name is different
 
@@ -108,7 +113,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-ASGI_APPLICATION = 'social_media_feed.asgi.application'
+
 WSGI_APPLICATION = 'social_media_feed.wsgi.application'
 
 # Database
