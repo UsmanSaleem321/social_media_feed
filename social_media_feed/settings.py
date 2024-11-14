@@ -87,10 +87,6 @@ CHANNEL_LAYERS = {
     }
 }
 
-# Ensure that 'ASGI_APPLICATION' is correctly set
-ASGI_APPLICATION = 'social_media_feed.routing.application'  # Adjust if your app name is different
-
-
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=20),  # Set access token lifetime (default is 5 minutes)
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Set refresh token lifetime (default is 1 day)
@@ -108,7 +104,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-
+ASGI_APPLICATION = 'social_media_feed.asgi.application'
 WSGI_APPLICATION = 'social_media_feed.wsgi.application'
 
 # Database
