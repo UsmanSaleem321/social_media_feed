@@ -35,8 +35,8 @@
   const roomId = "{{ room.id }}";  // Assuming `room` is available in the context
   // chatroom.js
 // Replace with actual room ID and user name
-const wsUrl = `wss://54.172.237.196/ws/chats/${roomId}/`;
-const socket = new WebSocket(wsUrl);
+
+const socket = new WebSocket("wss://54.172.237.196/ws/chats/${roomId}/", ["Bearer", "ff4e25f61191bf5cc598aa89405a29d827ad3eea"]);
 
 // WebSocket event listeners
 socket.onopen = function() {
