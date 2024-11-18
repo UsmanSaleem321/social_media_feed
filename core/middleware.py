@@ -30,10 +30,13 @@ class JWTAuthMiddleware(BaseMiddleware):
             try:
                 # Extract the token after "Bearer"
                 token = token.decode().split(" ")[1]
+                print("Token:", token)
                 scope['user'] = await get_user_from_jwt(token)
-            except Exception:
+            except Exception as e:
+                print("Error in token validation:", e) 
                 scope['user'] = AnonymousUser()
         else:
+            print("No authorization header found.")
             scope['user'] = AnonymousUser()
 
         return await super().__call__(scope, receive, send)
