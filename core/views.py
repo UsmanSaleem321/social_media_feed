@@ -451,3 +451,15 @@ class chat_room(View):
             "current_user":request.user
         }
         return render(request, "chat_room.html", context)
+
+class get_otp_detail(View):
+    def get(self,request,*args, **kwargs):
+        return render(request, "otp.html")
+    
+    def post(self,request,*args, **kwargs):
+        pass
+
+class otp_verifyview(View):
+    def get(self,request,*args, **kwargs):
+
+        return render(request,"otp.html")

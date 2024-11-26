@@ -7,16 +7,14 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Login</h2>
-          <form method="post">
+          <form method="post" action="">
             {% csrf_token %}
-            {% bootstrap_form form %}
-            <p>Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
-            <p><a href="{% url 'otp_detail' %}">Forgot Password?</a></p>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <input type="text" name="username" placeholder="Enter Username" required />
+            <input type="text" name="phone" placeholder="Enter phone Number" required />
+            <button type="submit">Verify OTP</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 {% endblock %}
-

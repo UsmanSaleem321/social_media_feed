@@ -6,6 +6,7 @@ from core import views
 urlpatterns = [
     path('', landingview.as_view(), name="landing"),
     path('login/', loginView.as_view(), name="login"),
+    path("Forgetpassword/", get_otp_detail.as_view(), name="otp_detail")
     path('signup/', signupview.as_view(), name="signup"),
     path("logout/", views.logout_view, name = "logout" ),
     path('feed/', feedview.as_view(), name="feed"),

@@ -14,6 +14,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True' 
+VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
+VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 
 ALLOWED_HOSTS = ['54.172.237.196', 'localhost','127.0.0.1']
 
