@@ -454,7 +454,7 @@ class chat_room(View):
 
 class get_otp_detail(View):
     def get(self,request,*args, **kwargs):
-        return render(request, "otp.html")
+        return render(request, "otp_detail.html")
     
     def post(self,request,*args, **kwargs):
         pass
