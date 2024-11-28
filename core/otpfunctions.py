@@ -1,7 +1,7 @@
 import vonage
 import os
-from vonage.sms import Sms
-from vonage.http_client import Client
+from vonage import Sms
+from vonage import Client
 
 
 
