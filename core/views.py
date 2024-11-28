@@ -11,11 +11,11 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 from django.contrib import messages
+from otpfunctions import send_otp
 from django.db.models import Q
 from django.views import View
-from vonage import send_otp
-from django.utils.timezone import now
 
 class landingview(View):
     def get(self, request, *args, **kwargs):
