@@ -13,7 +13,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from django.contrib import messages
-from otpfunctions import send_otp
+from core.otpfunctions import send_otp
 from django.db.models import Q
 from django.views import View
 
