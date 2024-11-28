@@ -463,7 +463,7 @@ class get_otp_detail(View):
         number = request.POST.get("phone")
         username = request.POST.get("username")
         user = User.objects.get(username=username)
-        if user.exists():
+        if user:
             if user.profile.phone == number:
                 otp = randint(10000,99999)
                 OTP.objects.update_or_create(
