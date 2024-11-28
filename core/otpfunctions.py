@@ -1,5 +1,7 @@
 import vonage
 import os
+from vonage import Client, Sms
+
 
 def send_otp(phone_number, otp):
     client = vonage.Client(key=os.getenv("VONAGE_API_KEY"), secret=os.getenv("VONAGE_API_SECRET"))
