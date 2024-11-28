@@ -1,6 +1,8 @@
 import vonage
 import os
-from vonage import Client, Sms
+from vonage.sms import Sms
+from vonage.http_client import Client
+
 
 
 def send_otp(phone_number, otp):
