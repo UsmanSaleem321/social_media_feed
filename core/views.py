@@ -1,6 +1,7 @@
+from random import randint
 from .forms import PostForm, CommentForm, UsernameChangeForm, imageupdateform,CustomUserCreationForm,profileform
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post, Comment, Like, Profile,FriendRequest, Room, Message
+from .models import Post, Comment, Like, Profile,FriendRequest, Room, Message, OTP
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
@@ -13,6 +14,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import Q
 from django.views import View
+from vonage import send_otp
+from django.utils.timezone import now
 
 class landingview(View):
     def get(self, request, *args, **kwargs):
@@ -457,9 +460,27 @@ class get_otp_detail(View):
         return render(request, "otp_detail.html")
     
     def post(self,request,*args, **kwargs):
-        pass
-
+        number = request.POST.get("phone")
+        username = request.POST.get("username")
+        user = User.objects.get(username=username)
+        if user.exists():
+            if user.profile.phone == number:
+                otp = randint(10000,99999)
+                OTP.objects.update_or_create(
+                    number=number,
+                    defaults={"otp": otp, "created_at": now()},
+                    )
+                status = send_otp(number,otp)
+                if status:
+                    return redirect("verify_otp")
+                else:
+                    messages.error(request,"otp not sent try again")
+                    return redirect("otp_detail")
+            else:
+                messages.error(request,"number is incorrect")
+                return redirect("otp_detail")       
+        messages.error(request,"user does not exits")
+        return redirect("otp_detail")
 class otp_verifyview(View):
-    def get(self,request,*args, **kwargs):
-
+    def get(self,request,*args, **kwargs):    
         return render(request,"otp.html")

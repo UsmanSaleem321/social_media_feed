@@ -1,7 +1,9 @@
+from datetime import timedelta
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.timezone import now
 
 class Post(models.Model):
     content = models.TextField()
@@ -70,6 +72,13 @@ class Message(models.Model):
     class Meta:
         ordering = ['timestamp']
 
+class OTP(models.Model):
+    number = models.CharField(max_length=15, unique=True)
+    otp = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def is_expired(self):
+        return now() > self.created_at + timedelta(minutes=5) 
 
 
 
