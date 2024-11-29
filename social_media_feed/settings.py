@@ -17,7 +17,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 
-ALLOWED_HOSTS = ['54.172.237.196', 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['98.85.161.52', 'localhost','127.0.0.1']
 
 
 # Application definition
