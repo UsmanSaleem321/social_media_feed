@@ -120,7 +120,7 @@ DATABASES = {
         'USER': 'usman',
         'PASSWORD': 'usman',
         'HOST': 'localhost',  # Use 'localhost' if running on the same server
-        'PORT': '',           # Leave empty for default port 5432
+        'PORT': '5432',           # Leave empty for default port 5432
     }
 }
 
