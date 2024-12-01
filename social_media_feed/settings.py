@@ -19,7 +19,6 @@ VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 
 ALLOWED_HOSTS = ['98.85.161.52', 'localhost','127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [
