@@ -53,9 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'social_media_feed.urls'
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-]
+
 
 TEMPLATES = [
     {
@@ -90,8 +88,8 @@ CACHES = {
     }
 }
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = "default"
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=20),  # Set access token lifetime (default is 5 minutes)
