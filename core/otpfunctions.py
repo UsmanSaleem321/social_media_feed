@@ -1,9 +1,11 @@
-import vonage
 import os
+from vonage import Sms
 
 def send_otp(phone_number, otp):
-    client = vonage.Client(key=os.getenv("VONAGE_API_KEY"), secret=os.getenv("VONAGE_API_SECRET"))
-    sms = vonage.Sms(client)
+    sms = Sms(
+        api_key=os.getenv("VONAGE_API_KEY"),
+        api_secret=os.getenv("VONAGE_API_SECRET"),
+    )
 
     response = sms.send_message({
         "from": "YourAppName",
@@ -16,5 +18,3 @@ def send_otp(phone_number, otp):
     else:
         print(f"Error: {response['messages'][0]['error-text']}")
         return False  # OTP failed
-
-
