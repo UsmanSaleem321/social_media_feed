@@ -1,12 +1,12 @@
 import os
-from vonage import Sms
+from vonage import Sms, VonageHttpClient
 
 def send_otp(phone_number, otp):
-    sms = Sms(
-        api_key=os.getenv("VONAGE_API_KEY"),
-        api_secret=os.getenv("VONAGE_API_SECRET"),
-    )
+    # Create a client instance with API key and secret
+    client = VonageHttpClient(api_key=os.getenv("VONAGE_API_KEY"), api_secret=os.getenv("VONAGE_API_SECRET"))
+    sms = Sms(client)
 
+    # Send the SMS message
     response = sms.send_message({
         "from": "YourAppName",
         "to": phone_number,
