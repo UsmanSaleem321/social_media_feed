@@ -470,8 +470,8 @@ class get_otp_detail(View):
                     number=number,
                     defaults={"otp": otp, "created_at": now()},
                     )
-                status = send_otp(number,otp)
-                if status:
+                sent= send_otp(number,otp)
+                if sent:
                     return redirect("verify_otp")
                 else:
                     messages.error(request,"otp not sent try again")
