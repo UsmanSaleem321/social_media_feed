@@ -1,7 +1,7 @@
 from vonage import Sms
 
 def send_otp(phone_number, otp):
-    sms = Sms(key="fa0d5408", secret="VHZOPwnIq8eCVM6I")
+    sms = Sms(api_key="fa0d5408", api_secret="VHZOPwnIq8eCVM6I")
 
     response = sms.send_message({
         "from": "Vonage",
