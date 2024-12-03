@@ -2,7 +2,7 @@ import vonage
 
 def send_otp(phone_number, otp):
     # Initialize the Vonage client
-    vonage_client = vonage.Client(key="fa0d5408", secret="VHZOPwnIq8eCVM6I")
+    vonage_client = vonage.Auth(key="fa0d5408", secret="VHZOPwnIq8eCVM6I")
     sms = vonage.Sms(vonage_client)
 
     # Send the SMS message
