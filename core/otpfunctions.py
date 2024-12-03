@@ -1,7 +1,7 @@
 import nexmo
 
 def send_otp(phone_number, otp):
-    client = nexmo.Client (api_key="fa0d5408", api_secret="VHZOPwnIq8eCVM6I")
+    client = nexmo.Client (key="fa0d5408", secret="VHZOPwnIq8eCVM6I")
     response =  client.send_message({
         "from": "Vonage",
         "to": phone_number,
