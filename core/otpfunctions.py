@@ -1,9 +1,10 @@
-from vonage import Sms
+from vonage import Sms, HttpClient
 
 def send_otp(phone_number, otp):
-    client = Sms(api_key="fa0d5408", api_secret="VHZOPwnIq8eCVM6I")
+    client = HttpClient(api_key="fa0d5408", api_secret="VHZOPwnIq8eCVM6I")
+    sms = Sms(client)
 
-    response = client.send_message({
+    response = sms.send_message({
         "from": "Vonage",
         "to": phone_number,
         "text": f"Your OTP is: {otp}",
@@ -13,4 +14,5 @@ def send_otp(phone_number, otp):
         return True  # OTP sent successfully
     else:
         return False  # OTP sending failed
+
 
