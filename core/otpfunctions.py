@@ -3,7 +3,7 @@ from vonage import Sms
 
 def send_otp(phone_number, otp):
     # Create a client instance with API key and secret
-    client = Sms(api_key=os.getenv("VONAGE_API_KEY"), api_secret=os.getenv("VONAGE_API_SECRET"))
+    client = Sms(key=os.getenv("VONAGE_API_KEY"), secret=os.getenv("VONAGE_API_SECRET"))
 
 
     # Send the SMS message
