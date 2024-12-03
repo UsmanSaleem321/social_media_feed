@@ -1,19 +1,16 @@
-import vonage
+from vonage import Sms
 
 def send_otp(phone_number, otp):
-    # Initialize the Vonage client
-    vonage_client = vonage.Auth(key="fa0d5408", secret="VHZOPwnIq8eCVM6I")
-    sms = vonage.Sms(vonage_client)
+    client = Sms(api_key="fa0d5408", api_secret="VHZOPwnIq8eCVM6I")
 
-    # Send the SMS message
-    response = sms.send_message({
+    response = client.send_message({
         "from": "Vonage",
         "to": phone_number,
         "text": f"Your OTP is: {otp}",
     })
 
-    # Check the response for status
     if response["messages"][0]["status"] == "0":
         return True  # OTP sent successfully
     else:
         return False  # OTP sending failed
+
