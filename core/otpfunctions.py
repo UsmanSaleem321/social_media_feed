@@ -8,6 +8,6 @@ def send_otp(phone_number, otp):
         "text": f"Your OTP is: {otp}",
     })
     if response["messages"][0]["status"] == "0":
-        return True  # OTP sent successfully
+        return True 
     else:
-        return False  # OTP sending failed
+        return False

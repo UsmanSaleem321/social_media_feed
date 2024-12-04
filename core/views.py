@@ -466,12 +466,14 @@ class get_otp_detail(View):
         if user:
             if user.profile.phone == number:
                 otp = randint(10000,99999)
-                OTP.objects.update_or_create(
+                sent= send_otp(number,otp)
+                if sent:
+                    OTP.objects.update_or_create(
+                    username=username,
                     number=number,
                     defaults={"otp": otp, "created_at": now()},
                     )
-                sent= send_otp(number,otp)
-                if sent:
+                    request.session["number"] = number
                     return redirect("verify_otp")
                 else:
                     messages.error(request,"otp not sent try again")
@@ -481,6 +483,25 @@ class get_otp_detail(View):
                 return redirect("otp_detail")       
         messages.error(request,"user does not exits")
         return redirect("otp_detail")
+    
 class otp_verifyview(View):
+    
     def get(self,request,*args, **kwargs):    
-        return render(request,"otp.html")
+        number = request.session.get('number')
+        context={
+            "number":number
+        }
+        return render(request,"otp.html", context )
+    
+    def post(self,request,*args, **kwargs):
+        number = request.POST.get('number')
+        otp = request.POST.get('otp')
+        otp_object = OTP.objects.filter(number=number,otp=otp)
+        if otp_object:
+            username = otp_object.username
+            user = User.objects.get(username=username)
+            login(request,user)
+            return redirect("feed")
+        else:
+            messages.error(request, "OTP entered is not correct")
+            return redirect("verify_otp")

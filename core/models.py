@@ -73,6 +73,7 @@ class Message(models.Model):
         ordering = ['timestamp']
 
 class OTP(models.Model):
+    username = models.CharField(max_length=20,unique=True)
     number = models.CharField(max_length=15, unique=True)
     otp = models.CharField(max_length=6)
     created_at = models.DateTimeField(auto_now_add=True)

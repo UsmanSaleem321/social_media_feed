@@ -9,6 +9,7 @@
           <h2 class="card-title">Login</h2>
           <form method="post" action="">
             {% csrf_token %}
+            <input type="hidden" name="number" value="{{ number }}">
             <input type="text" name="otp" placeholder="Enter OTP" required />
             <button type="submit">Verify OTP</button>
           </form>
