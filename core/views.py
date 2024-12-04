@@ -496,7 +496,7 @@ class otp_verifyview(View):
     def post(self,request,*args, **kwargs):
         number = request.POST.get('number')
         otp = request.POST.get('otp')
-        otp_object = OTP.objects.filter(number=number,otp=otp)
+        otp_object = OTP.objects.get(number=number,otp=otp)
         if otp_object:
             username = otp_object.username
             user = User.objects.get(username=username)
