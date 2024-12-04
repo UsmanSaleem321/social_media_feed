@@ -501,6 +501,7 @@ class otp_verifyview(View):
             username = otp_object.username
             user = User.objects.get(username=username)
             login(request,user)
+            otp_object.delete()
             return redirect("feed")
         else:
             messages.error(request, "OTP entered is not correct")
