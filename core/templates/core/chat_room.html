@@ -35,7 +35,7 @@
   const roomId = "{{ room.id }}";  // Assuming `room` is available in the context
   
   // Use template literals to construct the WebSocket URL
-  const socket = new WebSocket(`wss://54.172.237.196/ws/chats/${roomId}`);
+  const socket = new WebSocket(`ws://98.85.161.52/ws/chats/${roomId}`);
 
 // WebSocket event listeners
 socket.onopen = function() {
