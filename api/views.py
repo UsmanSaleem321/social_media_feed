@@ -51,6 +51,7 @@ class CommentRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
         return comments
 
 class SignupAPIView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
         form = CustomUserCreationForm(data=request.data)
         if form.is_valid():
