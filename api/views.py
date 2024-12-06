@@ -13,10 +13,6 @@ class PostListCreateApiView(ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author = self.request.user)
 
-    
-    def get_queryset(self):
-        posts = Post.objects.filter(author = self.request.user)
-        return posts
 
 class postRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
