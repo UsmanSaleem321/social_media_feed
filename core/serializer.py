@@ -1,7 +1,9 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from .models import *
 
 class PostSerializer(ModelSerializer):
+    author = serializers.CharField(source = 'author.username', read_only=True)
     class Meta:
         model = Post
         fields = ['content', 'author', 'created_at', 'updated_at']
