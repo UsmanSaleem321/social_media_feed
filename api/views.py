@@ -76,7 +76,7 @@ class LikeAPIView(APIView):
 class ProfileAPIView(RetrieveUpdateAPIView):
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
+    
     def get_queryset(self):
         pk = self.kwargs['pk']
-        profile = get_object_or_404(Profile, id=pk)
-        return profile
+        return Profile.objects.filter(id=pk)
