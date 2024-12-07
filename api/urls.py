@@ -14,6 +14,7 @@ urlpatterns = [
     path('signup/', SignupAPIView.as_view(), name="signup"),
     path('posts/', PostListCreateApiView.as_view(), name = "posts_list"),
     path('posts/<int:pk>/', postRetrieveUpdateDestroyAPIView.as_view()),
+    path('posts/<int:pk>/like', LikeAPIView.as_view(), name = "likeview"),
     path('posts/<int:pk>/comments/', CommentListCreateApiView.as_view()),
     path('posts/<int:com_pk>/comments/<int:pk>/', CommentRetrieveUpdateDestroyAPIView.as_view()),
 

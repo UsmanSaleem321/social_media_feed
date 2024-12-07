@@ -60,3 +60,16 @@ class SignupAPIView(APIView):
         else:
             return Response({"errors": form.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+class LikeAPIView(APIView):
+    permission_classes = [IsAuthenticated] 
+
+    def post(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, id=pk)
+        like, created = Like.objects.get_or_create(post=post, user=request.user)
+        if created:
+            message = "Like added successfully"
+        else:
+            message = "You already liked this post"
+        
+        return Response({"message": message}, status=status.HTTP_200_OK)
+
