@@ -15,5 +15,10 @@ class CommentSerializer(ModelSerializer):
         fields = ['id','content','user','post','created_at','updated_at']
         read_only_fields = ['user','post']
 
+class ProfileSerializer(ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['id', 'user', 'bio', 'birth_date', 'phone', 'followers', 'image','friends']
+
 
    

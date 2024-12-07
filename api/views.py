@@ -73,3 +73,9 @@ class LikeAPIView(APIView):
         
         return Response({"message": message}, status=status.HTTP_200_OK)
 
+class ProfileAPIView(RetrieveUpdateAPIView):
+    
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        profile = get_object_or_404(Profile, id=pk)
+        return profile
