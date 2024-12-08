@@ -92,3 +92,5 @@ class friendrequestAPIView(APIView):
             "sent_requests":sent_requests_serialized,
             "recieved_requests":received_requests_serialized,
         })
+
+    
