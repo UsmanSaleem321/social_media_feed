@@ -85,7 +85,7 @@ class friendrequestAPIView(APIView):
     def get(self,request,*args, **kwargs):
         profile = Profile.objects.get(user=request.user)
         sent_requests = profile.sent_requests.all()
-        recieved_requests = profile.receive_requests.all()
+        recieved_requests = profile.received_requests.all()
         return Response({
             "sent_requests":sent_requests,
             "recieved_requests":recieved_requests,
