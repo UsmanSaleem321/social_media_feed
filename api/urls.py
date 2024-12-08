@@ -18,6 +18,7 @@ urlpatterns = [
     path('posts/<int:pk>/like/', LikeAPIView.as_view(), name = "likeview"),
     path('posts/<int:pk>/comments/', CommentListCreateApiView.as_view()),
     path('posts/<int:com_pk>/comments/<int:pk>/', CommentRetrieveUpdateDestroyAPIView.as_view()),
+    path('friend_requests/', friendrequestAPIView.as_view(), name = "request_api"),
 
 ]
 

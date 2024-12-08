@@ -80,3 +80,13 @@ class ProfileAPIView(RetrieveUpdateAPIView):
     def get_queryset(self):
         pk = self.kwargs['pk']
         return Profile.objects.filter(id=pk)
+
+class friendrequestAPIView(APIView):
+    def get(self,request,*args, **kwargs):
+        profile = Profile.objects.get(user=request.user)
+        sent_request = profile.sent_request.all()
+        recieved_request = profile.receive_request.all()
+        return Response({
+            "sent_request":sent_request,
+            "recieved_request":recieved_request,
+        })
