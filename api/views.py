@@ -86,7 +86,9 @@ class friendrequestAPIView(APIView):
         profile = Profile.objects.get(user=request.user)
         sent_requests = profile.sent_requests.all()
         recieved_requests = profile.received_requests.all()
+        sent_requests_serialized = FriendRequestSerializer(sent_requests, many=True).data
+        received_requests_serialized = FriendRequestSerializer(recieved_requests, many=True).data
         return Response({
-            "sent_requests":sent_requests,
-            "recieved_requests":recieved_requests,
+            "sent_requests":sent_requests_serialized,
+            "recieved_requests":received_requests_serialized,
         })

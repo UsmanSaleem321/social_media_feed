@@ -20,5 +20,10 @@ class ProfileSerializer(ModelSerializer):
         model = Profile
         fields = ['id', 'user', 'bio', 'birth_date', 'phone', 'followers', 'image','friends']
 
+class FriendRequestSerializer(ModelSerializer):
+    class Meta:
+        model = FriendRequest
+        fields = ['from_profile', 'to_profile','created_at']
+
 
    
